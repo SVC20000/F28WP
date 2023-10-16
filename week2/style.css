@@ -3,15 +3,16 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    color: #505050;
+    color: #EADBC8;
 }
 
 /* Header Styles */
 header {
-    background-color: #282689;
+    background-color: #3D0C11;
     color: #fff;
     text-align: center;
     padding: 20px;
+    position: sticky;
 }
 
 .headeraH1 {
@@ -50,11 +51,13 @@ nav a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    transition: background-color 0.3s;  /* Smooth transition for hover effect */
+    transition: background-color 0.3s;
+    /* Smooth transition for hover effect */
 }
 
 nav a:hover {
-    background-color: #505050;  /* Darker shade for hover */
+    background-color: #505050;
+    /* Darker shade for hover */
 }
 
 /* Banner Styles */
@@ -84,7 +87,7 @@ main {
     margin: 2rem auto;
     padding: 2rem;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 main h3 {
@@ -177,11 +180,13 @@ footer li {
 footer a {
     color: #fff;
     text-decoration: none;
-    transition: color 0.3s;  /* Smooth transition for hover effect */
+    transition: color 0.3s;
+    /* Smooth transition for hover effect */
 }
 
 footer a:hover {
-    color: #b3b3b3;  /* Lighter color on hover */
+    color: #b3b3b3;
+    /* Lighter color on hover */
 }
 
 footer p {
