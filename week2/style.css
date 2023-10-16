@@ -42,6 +42,10 @@ nav ul {
     padding: 20px;
 }
 
+.active {
+    color: #eed0bc;
+}
+
 nav li {
     display: inline-block;
 }
