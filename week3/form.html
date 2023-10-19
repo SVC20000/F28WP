@@ -25,8 +25,6 @@
       #form h1 {
           color: #0f2027;
           /* Dark text color for the heading */
-          width: 300px;
-          margin: 20vh auto 0 auto;
           text-align: center;
           /* Center-align the heading */
       }
@@ -111,7 +109,7 @@
 
       <div class="inputcontrol">
         <label for="ConfirmPassword">Confirm Password:</label>
-        <input type="password" id="ConfirmPassword" placeholder="Confirm Password" name="cConfirmPassword">
+        <input type="password" id="ConfirmPassword" placeholder="Confirm Password" name="ConfirmPassword">
         <div class="error" id="ConfirmPasswordError"></div>
       </div>
 
@@ -144,15 +142,15 @@
       });
 
       email.addEventListener("blur", event =>{
-        validateEmail
+        validateEmail()
       });
 
       password.addEventListener("blur", event =>{
-        validatePassword
+        validatePassword()
       });
 
       ConfirmPassword.addEventListener("blur", event =>{
-        validateConfirmPassword
+        validateConfirmPassword()
       });
 
       const callError = (element, message) => {
@@ -163,7 +161,7 @@
         inputcontrol.classList.add("error");
       }
 
-      const callSuccess = (element, message) => {
+      const callSuccess = (element) => {
         const inputcontrol = element.parentElement;
         const errorDisplay = inputcontrol.querySelector(".success");
         errorDisplay.innerText = " ";
