@@ -9,20 +9,20 @@
   
     <form id="form">
     <div>
-      <label for="Username">Username:</label>
-      <input type="text" id="Username" placeholder="Username">
-      <div class="error" id="UsernameError"></div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" placeholder="Username">
+      <div class="error" id="usernameError"></div>
     </div>
     <div>
-      <label for="Email">Email:</label>
-      <input type="email" id="Email" placeholder="Email">
-      <div class="error" id="EmailError"></div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Email">
+      <div class="error" id="emailError"></div>
     </div>
 
     <div>
-      <label for="Password">Password:</label>
-      <input type="password" id="Password" placeholder="Password">
-      <div class="error" id="PasswordError"></div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Password">
+      <div class="error" id="passwordError"></div>
     </div>
 
     <div>
@@ -37,64 +37,64 @@
 
     <script>
       const form = document.getElementById("form");
-      const Username = document.getElementById("Username");
-      const UsernameError = document.getElementById("UsernameError")
-      const Email = document.getElementById("Email");
-      const EmailError = document.getElementById("EmailError");
-      const Password = document.getElementById("Password");
-      const PasswordError = document.getElementById("PasswordError");
+      const username = document.getElementById("username");
+      const usernameError = document.getElementById("usernameError")
+      const email = document.getElementById("email");
+      const emailError = document.getElementById("emailError");
+      const password = document.getElementById("password");
+      const passwordError = document.getElementById("passwordError");
       const ConfirmPassword = document.getElementById("ConfirmPassword");
       const ConfirmPasswordError = document.getElementById("ConfirmPasswordError");
       
-      function validateUsername() {
-        if (Username.value === "") {
-          UsernameError.textContent = "Username Cannot Be Empty";
-          Username.classList.remove("success");
-          Username.classList.add("error");
+      function validateusername() {
+        if (username.value === "") {
+          usernameError.textContent = "Username Cannot Be Empty";
+          username.classList.remove("success");
+          username.classList.add("error");
           return false;
         }
       }
-      UsernameError.textContent = "";
-      Username.classList.remove("error");
-      Username.classList.add("success");
+      usernameError.textContent = "";
+      username.classList.remove("error");
+      username.classList.add("success");
       return true;
 
-      function validateEmail() {
-        const EmailPattern = /^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        if (Email.value === ""){
-          EmailError.textContent = "Email Cannot Be Empty";
-          Email.classList.remove("success");
-          Email.classList.add("error");
+      function validateemail() {
+        const emailPattern = /^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (email.value === ""){
+          emailError.textContent = "Email Cannot Be Empty";
+          email.classList.remove("success");
+          email.classList.add("error");
           return false;
         }
-        if(!EmailPattern.test(Email.value)){
-          EmailError.textContent = "Invalid Email";
-          Email.classList.remove("success");
-          Email.classList.add("error");
+        if(!emailPattern.test(email.value)){
+          emailError.textContent = "Invalid Email";
+          email.classList.remove("success");
+          email.classList.add("error");
           return false;
         }
-        EmailError.textContent = "";
-        Email.classList.remove("error");
-        Email.classList.add("success");
+        emailError.textContent = "";
+        email.classList.remove("error");
+        email.classList.add("success");
         return true;
       }
 
-      function validatePassword(){
-        if (Password.value === ""){
-          PasswordError.textContent = "Password Cannot Be Empty";
-          Password.classList.remove("success");
-          Password.classList.add("error");
+      function validatepassword(){
+        if (password.value === ""){
+          passwordError.textContent = "Password Cannot Be Empty";
+          password.classList.remove("success");
+          password.classList.add("error");
           return false;
         }
-        if (Password.value.length < 8){
-          PasswordError.textContent = "Password must be at least 8 characters";
-          Password.classList.remove("success");
-          Password.classList.add("error");
+        if (password.value.length < 8){
+          passwordError.textContent = "Password must be at least 8 characters";
+          password.classList.remove("success");
+          password.classList.add("error");
           return false;
         }
-        PasswordError.textContent = "";
-        Password.classList.remove("error");
-        Password.classList.add("success");
+        passwordError.textContent = "";
+        password.classList.remove("error");
+        password.classList.add("success");
         return true;
       }
 
@@ -105,7 +105,7 @@
           ConfirmPassword.classList.add("error");
           return false;
         }
-        if(ConfirmPassword.value !== Password.value){
+        if(ConfirmPassword.value !== password.value){
           ConfirmPasswordError.textContent = "Passwords do not match";
           ConfirmPassword.classList.remove("success");
           ConfirmPassword.classList.add("error");
@@ -124,9 +124,9 @@
         validateConfirmPassword();
       }
 
-      Username.addEventListener("blur", validateUsername);
-      Email.addEventListener("blur", validateEmail);
-      Password.addEventListener("blur", validatePassword);
+      username.addEventListener("blur", validateusername);
+      email.addEventListener("blur", validateemail);
+      password.addEventListener("blur", validatepassword);
       ConfirmPassword.addEventListener("blur", validateConfirmPassword);
 
       form.addEventListener("submit", function(e) {
