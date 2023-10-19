@@ -217,6 +217,8 @@ horizontally */
 #form h1 {
     color: #0f2027;
     /* Dark text color for the heading */
+    width: 300px;
+    margin: 20vh auto 0 auto;
     text-align: center;
     /* Center-align the heading */
 }
