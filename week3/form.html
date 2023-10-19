@@ -4,40 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+      
+      /* Style for the form: setting width, auto margin for centering, padding,
+      background color, border radius for rounded corners, and font size */
+      #form {
+          width: 300px;
+          margin: 20vh auto 0 auto;
+          /* This centers the form vertically and
+      horizontally */
+          padding: 20px;
+          background-color: whitesmoke;
+          /* Light gray background for the form */
+          border-radius: 4px;
+          /* Rounded corners for the form */
+          font-size: 12px;
+      }
+
+      /* Style for the form's heading: setting the text color and alignment */
+      #form h1 {
+          color: #0f2027;
+          /* Dark text color for the heading */
+          width: 300px;
+          margin: 20vh auto 0 auto;
+          text-align: center;
+          /* Center-align the heading */
+      }
+
+      /* Style for the form's button: padding, top margin, full width, text color,
+      background color, no border, and rounded corners */
+      #form button {
+          padding: 10px;
+          margin-top: 10px;
+          /* Space above the button */
+          width: 100%;
+          /* Make the button expand the full width of the form */
+          color: white;
+          /* White text color for the button */
+          background-color: rgb(41, 57, 194);
+          /* Blue background color for the button
+          */
+          border: none;
+          /* Remove the default border */
+          border-radius: 4px;
+          /* Rounded corners for the button */
+      }
+
+      /* Container for input fields: using flexbox for layout, column direction */
+      .input-control {
+          display: flex;
+          flex-direction: column;
+          /* Stack the children (label, input, error message)
+          vertically */
+      }
+
+      /* Remove focus outline from input fields */
+      .input-control input:focus {
+          outline: 0;
+          /* Remove outline when input is focused */
+      }
+
+      /* Style for input fields with class "success": green border */
+      .input-control.success input {
+          border-color: #09c372;
+          /* Green border to indicate successful input */
+      }
+
+      /* Style for input fields with class "error": red border */
+      .input-control.error input {
+          border-color: #ff3860;
+          /* Red border to indicate an error in input */
+      }
+
+      /* Style for the error message: text color, font size, and height */
+      .input-control .error {
+          color: #ff3860;
+          /* Red text color for error messages */
+          font-size: 9px;
+          /* Smaller font size for error messages */
+          height: 13px;
+          /* Explicit height to ensure consistent spacing */
+      }
+    </style>
   </head>
   <body>
-    <h1>Registration Form</h1>
-  
-    <form id="form">
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" id="username" placeholder="Username" name="username">
-      <div class="error" id="usernameError"></div>
-    </div>
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" placeholder="Email" name="email">
-      <div class="error" id="emailError"></div>
-    </div>
-
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" placeholder="Password" name="password">
-      <div class="error" id="passwordError"></div>
-    </div>
-
-    <div>
-      <label for="ConfirmPassword">Confirm Password:</label>
-      <input type="password" id="ConfirmPassword" placeholder="Confirm Password" name="ConfirmPassword">
-      <div class="error" id="ConfirmPasswordError"></div>
-    </div>
-
-    <button type="submit" id="submit">Submit</button>
     
+    <form id="form">
+        <h1>Registration Form</h1>
+      <div class="inputcontrol">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Username" name="username">
+        <div class="error" id="usernameError"></div>
+      </div>
+
+      <div class="inputcontrol">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Email" name="email">
+        <div class="error" id="emailError"></div>
+      </div>
+
+      <div class="inputcontrol">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Password" name="password">
+        <div class="error" id="passwordError"></div>
+      </div>
+
+      <div class="inputcontrol">
+        <label for="ConfirmPassword">Confirm Password:</label>
+        <input type="password" id="ConfirmPassword" placeholder="Confirm Password" name="cConfirmPassword">
+        <div class="error" id="ConfirmPasswordError"></div>
+      </div>
+
+      <button type="submit" id="submit">Submit</button>
+      
     </form>
 
     <script>
+
       const form = document.getElementById("form");
       const username = document.getElementById("username");
       const usernameError = document.getElementById("usernameError")
@@ -47,98 +130,92 @@
       const passwordError = document.getElementById("passwordError");
       const ConfirmPassword = document.getElementById("ConfirmPassword");
       const ConfirmPasswordError = document.getElementById("ConfirmPasswordError");
-      
-      function validateUsername() {
-        if (username.value === "") {
-          usernameError.textContent = "Username Cannot Be Empty";
-          username.classList.remove("success");
-          username.classList.add("error");
-          return false;
-        }
-      }
-      usernameError.textContent = "";
-      username.classList.remove("error");
-      username.classList.add("success");
-      return true;
 
-      function validateEmail() {
-        const emailPattern = /^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        if (email.value === ""){
-          emailError.textContent = "Email Cannot Be Empty";
-          email.classList.remove("success");
-          email.classList.add("error");
-          return false;
-        }
-        if(!emailPattern.test(email.value)){
-          emailError.textContent = "Invalid Email";
-          email.classList.remove("success");
-          email.classList.add("error");
-          return false;
-        }
-        emailError.textContent = "";
-        email.classList.remove("error");
-        email.classList.add("success");
-        return true;
-      }
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        validateUsername()
+        validateEmail()
+        validatePassword()
+        validateConfirmPassword()
+      });
 
-      function validatePassword(){
-        if (password.value === ""){
-          passwordError.textContent = "Password Cannot Be Empty";
-          password.classList.remove("success");
-          password.classList.add("error");
-          return false;
-        }
-        if (password.value.length < 8){
-          passwordError.textContent = "Password must be at least 8 characters";
-          password.classList.remove("success");
-          password.classList.add("error");
-          return false;
-        }
-        passwordError.textContent = "";
-        password.classList.remove("error");
-        password.classList.add("success");
-        return true;
+      username.addEventListener("blur", event => {
+        validateUsername()
+      });
+
+      email.addEventListener("blur", event =>{
+        validateEmail
+      });
+
+      password.addEventListener("blur", event =>{
+        validatePassword
+      });
+
+      ConfirmPassword.addEventListener("blur", event =>{
+        validateConfirmPassword
+      });
+
+      const callError = (element, message) => {
+        const inputcontrol = element.parentElement;
+        const errorDisplay = inputcontrol.querySelector(".error");
+        errorDisplay.innerText = message;
+        inputcontrol.classList.remove("success");
+        inputcontrol.classList.add("error");
       }
 
-      function validateConfirmPassword(){
-        if(ConfirmPassword.value === ""){
-          ConfirmPasswordError.textContent = "Confirm Password cannot be empty";
-          ConfirmPassword.classList.remove("success");
-          ConfirmPassword.classList.add("error");
-          return false;
-        }
-        if(ConfirmPassword.value !== password.value){
-          ConfirmPasswordError.textContent = "Passwords do not match";
-          ConfirmPassword.classList.remove("success");
-          ConfirmPassword.classList.add("error");
-          return false;
-        }
-        ConfirmPasswordError.textContent = "";
-        ConfirmPassword.classList.remove("error");
-        ConfirmPassword.classList.add("success");
-        return true;
+      const callSuccess = (element, message) => {
+        const inputcontrol = element.parentElement;
+        const errorDisplay = inputcontrol.querySelector(".success");
+        errorDisplay.innerText = " ";
+        inputcontrol.classList.remove("error");
+        inputcontrol.classList.add("success");
       }
 
-      function validateform(){
-        return validateUsername() &&
-        validateEmail() &&
-        validatePassword() &&
-        validateConfirmPassword();
-      }
-
-      username.addEventListener("blur", validateUsername);
-      email.addEventListener("blur", validateEmail);
-      password.addEventListener("blur", validatePassword);
-      ConfirmPassword.addEventListener("blur", validateConfirmPassword);
-
-      form.addEventListener("submit", function(event) {
-        if(!validateform()){
-          event.preventDefault();
+      const validateUsername = () =>{
+        if (username.value.trim() === " "){
+          callError(username, "Username Cannot Be Empty");
         }
         else{
-          alert("Form Submitted")
+          callSuccess(username);
         }
-      });
+      };
+
+      const validateEmail = () => {
+        const emailPattern = /^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if(email.value.trim() === " "){
+          callError(email, "Email Cannot Be Empty");
+        }
+        else if(!emailPattern.test(email.value)){
+          callError(email, "Invalid Email Address");
+        }
+        else{
+          callSuccess(email);
+        }
+      };
+
+      const validatePassword = () => {
+        if(password.value === ""){
+          callError(password, "Password Cannot Be Empty");
+        }
+        else if(password.value.length < 8){
+          callError(password, "Password must be at least 8 characters");
+        }
+        else{
+          callSuccess(password);
+        }
+      };
+
+      const validateConfirmPassword = () => {
+        if(ConfirmPassword.value === ""){
+          callError(ConfirmPassword, "Confirm Password cannot be empty");
+        }
+        else if(ConfirmPassword.value !== password.value){
+          callError(ConfirmPassword, "Passwords do not match")
+        }
+        else{
+          callSuccess(ConfirmPassword);
+        }
+      };
 
     </script>
   </body>
