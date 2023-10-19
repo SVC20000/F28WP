@@ -47,54 +47,54 @@
       const ConfirmPasswordError = document.getElementById("ConfirmPasswordError");
       
       function validateUsername() {
-        if (username.value === "") {
-          usernameError.textContent = "Username Cannot Be Empty";
-          username.classList.remove("success");
-          username.classList.add("error");
+        if (Username.value === "") {
+          UsernameError.textContent = "Username Cannot Be Empty";
+          Username.classList.remove("success");
+          Username.classList.add("error");
           return false;
         }
       }
-      usernameError.textContent = "";
-      username.classList.remove("error");
-      username.classList.add("success");
+      UsernameError.textContent = "";
+      Username.classList.remove("error");
+      Username.classList.add("success");
       return true;
 
       function validateEmail() {
-        const emailPattern = /^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        if (email.value === ""){
-          emailError.textContent = "Email Cannot Be Empty";
-          email.classList.remove("success");
-          email.classList.add("error");
+        const EmailPattern = /^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (Email.value === ""){
+          EmailError.textContent = "Email Cannot Be Empty";
+          Email.classList.remove("success");
+          Email.classList.add("error");
           return false;
         }
-        if(!emailPattern.test(email.value)){
-          emailError.textContent = "Invalid Email";
-          email.classList.remove("success");
-          email.classList.add("error");
+        if(!EmailPattern.test(Email.value)){
+          EmailError.textContent = "Invalid Email";
+          Email.classList.remove("success");
+          Email.classList.add("error");
           return false;
         }
-        emailError.textContent = "";
-        email.classList.remove("error");
-        email.classList.add("success");
+        EmailError.textContent = "";
+        Email.classList.remove("error");
+        Email.classList.add("success");
         return true;
       }
 
       function validatePassword(){
-        if (password.value === ""){
-          passwordError.textContent = "Password Cannot Be Empty";
-          password.classList.remove("success");
-          password.classList.add("error");
+        if (Password.value === ""){
+          PasswordError.textContent = "Password Cannot Be Empty";
+          Password.classList.remove("success");
+          Password.classList.add("error");
           return false;
         }
-        if (password.value.length < 8){
-          passwordError.textContent = "Password must be at least 8 characters";
-          password.classList.remove("success");
-          password.classList.add("error");
+        if (Password.value.length < 8){
+          PasswordError.textContent = "Password must be at least 8 characters";
+          Password.classList.remove("success");
+          Password.classList.add("error");
           return false;
         }
-        passwordError.textContent = "";
-        password.classList.remove("error");
-        password.classList.add("success");
+        PasswordError.textContent = "";
+        Password.classList.remove("error");
+        Password.classList.add("success");
         return true;
       }
 
@@ -129,11 +129,11 @@
       Password.addEventListener("blur", validatePassword);
       ConfirmPassword.addEventListener("blur", validateConfirmPassword);
 
-      //form.addEventListener("submit", function(e) {
-        //if(!validateform){
-          //e.preventDefault();
-        //}
-      //});
+      form.addEventListener("submit", function(e) {
+        if(!validateform){
+          e.preventDefault();
+        }
+      });
 
     </script>
   </body>
