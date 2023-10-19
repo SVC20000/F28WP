@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        .error {
+          border: 1px red;
+        }
+        .success {
+          border: 1px green;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Registration Form</h1>
+  
+    <form id="form">
+    <div>
+      <label for="Username">Username:</label>
+      <input type="text" id="Username" placeholder="Username">
+      <div class="error" id="UsernameError"></div>
+    </div>
+    <div>
+      <label for="Email">Email:</label>
+      <input type="email" id="Email" placeholder="Email">
+      <div class="error" id="EmailError"></div>
+    </div>
+
+    <div>
+      <label for="Password">Password:</label>
+      <input type="password" id="Password" placeholder="Password">
+      <div class="error" id="PasswordError"></div>
+    </div>
+
+    <div>
+      <label for="ConfirmPassword">Confirm Password:</label>
+      <input type="password" id="ConfirmPassword" placeholder="Confirm Password">
+      <div class="error" id="ConfirmPasswordError"></div>
+    </div>
+
+    <button type="submit" id="submit">Submit</button>
+    
+    </form>
+
+    <script>
+      const form = document.getElementById("form");
+      const Username = document.getElementById("Username");
+      const UsernameError = document.getElementById("UsernameError")
+      const Email = document.getElementById("Email");
+      const EmailError = document.getElementById("EmailError");
+      const Password = document.getElementById("Password");
+      const PasswordError = document.getElementById("PasswordError");
+      const ConfirmPassword = document.getElementById("ConfirmPassword");
+      const ConfirmPasswordError = document.getElementById("ConfirmPasswordError");
+      
+      function validateUsername() {
+        if (username.value === "") {
+          usernameError.textContent = "Username Cannot Be Empty";
+          username.classList.remove("success");
+          username.classList.add("error");
+          return false;
+        }
+      }
+      usernameError.textContent = "";
+      username.classList.remove("error");
+      username.classList.add("success");
+      return true;
+
+      function validateEmail() {
+        const emailPattern = /^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (email.value === ""){
+          emailError.textContent = "Email Cannot Be Empty";
+          email.classList.remove("success");
+          email.classList.add("error");
+          return false;
+        }
+        if(!emailPattern.test(email.value)){
+          emailError.textContent = "Invalid Email";
+          email.classList.remove("success");
+          email.classList.add("error");
+          return false;
+        }
+        emailError.textContent = "";
+        email.classList.remove("error");
+        email.classList.add("success");
+        return true;
+      }
+
+      function validatePassword(){
+        if (password.value === ""){
+          passwordError.textContent = "Password Cannot Be Empty";
+          password.classList.remove("success");
+          password.classList.add("error");
+          return false;
+        }
+        if (password.value.length < 8){
+          passwordError.textContent = "Password must be at least 8 characters";
+          password.classList.remove("success");
+          password.classList.add("error");
+          return false;
+        }
+        passwordError.textContent = "";
+        password.classList.remove("error");
+        password.classList.add("success");
+        return true;
+      }
+
+      function validateConfirmPassword(){
+        if(ConfirmPassword.value === ""){
+          ConfirmPasswordError.textContent = "Confirm Password cannot be empty";
+          ConfirmPassword.classList.remove("success");
+          ConfirmPassword.classList.add("error");
+          return false;
+        }
+        if(ConfirmPassword.value !== Password.value){
+          ConfirmPasswordError.textContent = "Passwords do not match";
+          ConfirmPassword.classList.remove("success");
+          ConfirmPassword.classList.add("error");
+          return false;
+        }
+        ConfirmPasswordError.textContent = "";
+        ConfirmPassword.classList.remove("error");
+        ConfirmPassword.classList.add("success");
+        return true;
+      }
+
+      function validateform(){
+        return validateUsername() &&
+        validateEmail() &&
+        validatePassword() &&
+        validateConfirmPassword();
+      }
+
+      Username.addEventListener("blur", validateUsername);
+      Email.addEventListener("blur", validateEmail);
+      Password.addEventListener("blur", validatePassword);
+      ConfirmPassword.addEventListener("blur", validateConfirmPassword);
+
+      form.addEventListener("submit", function(e) {
+        if(!validateform){
+          e.preventDefault();
+        }
+      });
+
+    </script>
+  </body>
+</html>
