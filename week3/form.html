@@ -46,7 +46,7 @@
       const ConfirmPassword = document.getElementById("ConfirmPassword");
       const ConfirmPasswordError = document.getElementById("ConfirmPasswordError");
       
-      function validateusername() {
+      function validateUsername() {
         if (username.value === "") {
           usernameError.textContent = "Username Cannot Be Empty";
           username.classList.remove("success");
@@ -59,7 +59,7 @@
       username.classList.add("success");
       return true;
 
-      function validateemail() {
+      function validateEmail() {
         const emailPattern = /^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         if (email.value === ""){
           emailError.textContent = "Email Cannot Be Empty";
@@ -79,7 +79,7 @@
         return true;
       }
 
-      function validatepassword(){
+      function validatePassword(){
         if (password.value === ""){
           passwordError.textContent = "Password Cannot Be Empty";
           password.classList.remove("success");
@@ -124,9 +124,9 @@
         validateConfirmPassword();
       }
 
-      username.addEventListener("blur", validateusername);
-      email.addEventListener("blur", validateemail);
-      password.addEventListener("blur", validatepassword);
+      username.addEventListener("blur", validateUsername);
+      email.addEventListener("blur", validateEmail);
+      password.addEventListener("blur", validatePassword);
       ConfirmPassword.addEventListener("blur", validateConfirmPassword);
 
       form.addEventListener("submit", function(e) {
