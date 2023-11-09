@@ -1,5 +1,5 @@
 const input = document.getElementById("city_input");
-const button = document.getElementyId("button");
+const button = document.getElementById("button");
 const info = document.getElementbyId("weather_info");
 
 button. addEventListener ('click', function(){
