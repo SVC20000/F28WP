@@ -16,14 +16,14 @@ button. addEventListener("click", function(){
   ourRequest.open('GET',`https://api.openweathermap.org/data/2.5/weather?q=` + city + `&units=metric&appid=` + api);
 
   ourRequest.onload = function() {
-    if (ourRequest. status >= 200 && ourRequest.status < 400) {
+    if (ourRequest.status >= 200 && ourRequest.status < 400) {
     var ourData = JSON.parse(ourRequest.responseText);
     if(ourData.cod === 200){
       renderWeather(ourData);
     } else {
     alert("City not found");
     }
-} else {
+  } else {
     alert("Error!")
   }
 
@@ -34,9 +34,9 @@ ourRequest.onerror = function() {
 ourRequest.send();
 });
 
-function renderWeather (Data){
-  var temp = (Data.main.temp - 273.15).toFixed(2);
-  var HTMLtext = "<p> The weather in " + Data.name + " is " + Data.weather[0].description + ".<br> The temperature is " + Data.main.temp + "°C with a wind speed of " + Data.wind.speed + "m/s. <hr></p>";
+function renderWeather (ourData){
+  var temp = (ourData.main.temp - 273.15).toFixed(2);
+  var HTMLtext = "<p> The weather in " + ourData.name + " is " + ourData.weather[0].description + ".<br> The temperature is " + ourData.main.temp + "°C with a wind speed of " + ourData.wind.speed + "m/s. <hr></p>";
 
   weather_info.insertAdjacentHTML('beforeend', HTMLtext);
 }
