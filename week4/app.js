@@ -1,6 +1,6 @@
 const api = '19ea4c52afce7276e8b4bd05c1971df2';
 const input = document.getElementById("cityInput");
-const button = document.getElementById("btn");
+const button = document.getElementById("btn-2");
 const weather_info = document.getElementById("weather-info");
 
 button. addEventListener("click", function(){
