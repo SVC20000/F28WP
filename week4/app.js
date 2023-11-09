@@ -1,18 +1,18 @@
-const input = document.getElementById("city_input");
-const button = document.getElementById("button");
-const info = document.getElementbyId("weather_info");
+const input = document.getElementById("cityInput");
+const button = document.getElementById("btn");
+const info = document.getElementById("weather-info");
 
-button. addEventListener ('click', function(){
+button. addEventListener('click', function(){
   const api = '19ea4c52afce7276e8b4bd05c1971df2';
-  const cityname = input.value;
+  const cityInput = input.value;
 
-  if (!cityname){
+  if (!cityInput){
     alert ("Please Enter a City name"); 
     return;
   }
 
   var ourRequest = new XMLHttpRequest();
-  ourRequest.open('GET','https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${api}');
+  ourRequest.open('GET',`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${api}`);
 
   ourRequest.onload = function() {
     if (ourRequest. status >= 200 && ourRequest.status < 400) {
